@@ -47,7 +47,23 @@ class DaftarController extends Controller
             'kontingen' => 'required',
             'email' => 'required',
             'nohp' => 'required',
+            'foto' => 'required|array',            // Validasi untuk foto multiple
+            'foto.*' => 'image|mimes:jpeg,png,jpg|max:2048', // Validasi setiap file gambar
         ]);
+        // Handle foto upload
+        $fotoPaths = []; // Array untuk menyimpan path foto
+
+        if ($request->hasFile('foto')) {
+            foreach ($request->file('foto') as $foto) {
+                // Simpan file di direktori storage/app/public/foto
+                $path = $foto->store('pas_foto');
+                $fotoPaths[] = $path;
+            }
+        }
+
+        // Simpan path foto ke dalam data yang akan disimpan (gabungkan jika diperlukan)
+        $validatedData['foto'] = implode(',', $fotoPaths);
+
 
         $validatedData['nama'] = implode(', ', $validatedData['nama']);
         

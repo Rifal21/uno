@@ -21,6 +21,19 @@
           <p><span class="font-semibold">Jenis Kelamin:</span> {{ $peserta->gender }}</p>
           <p><span class="font-semibold">Berat Badan:</span> {{ $peserta->berat_badan }} Kg</p>
           <div class="font-semibold">Bukti Pembayaran:<img src="{{ asset('storage/' . $peserta->bukti_pembayaran) }}" class=" mx-auto max-h-48" alt=""></div>
+          <div class=""> <!-- Gambar Tambahan (Multiple Images) -->
+            @if($peserta->foto) <!-- Pastikan field 'foto' tidak kosong -->
+              @php
+                // Memecah string gambar menjadi array
+                $fotoPaths = explode(',', $peserta->foto);
+              @endphp
+              <div class="font-semibold">Foto Peserta:</div>
+              <div class="flex flex-wrap gap-4">
+                @foreach ($fotoPaths as $foto)
+                  <img src="{{ asset('storage/' . trim($foto)) }}" alt="Foto Peserta" class="h-32 w-32 object-cover rounded-md shadow">
+                @endforeach
+              </div>
+            @endif</div>
         </div>
       </div>
 

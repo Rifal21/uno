@@ -56,6 +56,7 @@
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">E-mail</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No Hp / Whatsapp</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bukti Pembayaran</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pas Foto</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">status</th>
             <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
           </tr>
@@ -74,6 +75,15 @@
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->email}}</td>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->nohp}}</td>
               <td class="px-6 py-4 text-sm text-gray-700"><img src="{{ asset('storage/' . $data->bukti_pembayaran) }}" alt="" class="h-20"></td>
+              <td class="px-6 py-4 text-sm text-gray-700">    @php
+                // Ubah string path menjadi array menggunakan koma sebagai pemisah
+                $fotoPaths = explode(',', $data->foto);
+            @endphp
+            <div class="flex space-x-2">
+                @foreach ($fotoPaths as $foto)
+                    <img src="{{ asset('storage/' . $foto) }}" alt="Foto" class="h-20 w-20 object-cover rounded-md">
+                @endforeach
+            </div></td>
               <td class="px-6 py-4 text-sm text-gray-700 font-bold {{ $data->status === 0 ? 'text-red-500' : 'text-green-500' }}">{{ $data->status === 0 ? 'Belum diverifikasi' : 'Terverifikasi'}}</td>
               <td class="px-6 py-4 text-center">
                 @if($data->status === 0)

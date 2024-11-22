@@ -107,12 +107,24 @@ class PesertaController extends Controller
     
         // Tentukan apakah file adalah gambar atau PDF
         $isImage = in_array(strtolower($fileExtension), ['jpg', 'jpeg', 'png']);
-    
+        
+         // Ambil foto peserta jika ada (diasumsikan sebagai string yang dipisahkan koma)
+         $fotoPaths = [];
+         if ($peserta->foto) {
+             $fotoFiles = explode(',', $peserta->foto); // Pecah string menjadi array
+             foreach ($fotoFiles as $foto) {
+                 $fotoPath = storage_path('app/public/' . trim($foto));
+                 if (Storage::disk('public')->exists(trim($foto))) {
+                     $fotoPaths[] = $fotoPath; // Tambahkan path valid ke array
+                 }
+             }
+         }
         // Render view ke PDF
         $pdf = PDF::loadView('dashboard.pendaftar.print', [
             'peserta' => $peserta,
             'filePath' => $filePath,
             'isImage' => $isImage,
+            'fotoPaths' => $fotoPaths, // Kirim foto ke view
         ]);
     
         // Tentukan nama file PDF
