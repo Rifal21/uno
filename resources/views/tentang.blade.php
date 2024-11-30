@@ -69,13 +69,14 @@
         <div class="space-y-4">
           <h6 class="font-bold text-tertiary"><i class="fas fa-award"></i> Tema Kegiatan</h6>
           <p class="text-sm font-medium">
-            “Mencari Bibit-bibit Daerah Yang Berkualitas Dan Menjunjung Tinggi Sportivitas ”.
+            "Menguatkan Tradisi, Mengukir Prestasi: Menjadikan Pencak Silat
+sebagai Pilar Karakter Bangsa”.
           </p>
         </div>
         <div class="space-y-4">
           <h6 class="font-bold text-tertiary"><i class="fas fa-fire"></i> Nama Kegiatan</h6>
           <p class="text-sm font-medium">
-            Kegiatan ini bernama “ UNPER OPEN IV “ Tingkat Derah.
+            Kegiatan ini bernama “ UNPER OPEN IV “.
           </p>
         </div>
         <div class="space-y-4">
@@ -138,6 +139,38 @@
       <h5 class="text-2xl font-bold mb-6 text-tertiary"><i class="fas fa-trophy"></i> Kejuaraan Yang Pernah Diraih</h5>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="space-y-4">
+          <h6 class="font-bold text-tertiary">→ Citra resmi wijaya 
+          </h6>
+          <p class="text-sm font-medium">
+            - TIM BK PORDA 2018 kab. TASIKMALAYA <br>
+            - juara II porda 2018 <br>
+            - ⁠juara III KEJURDA MAHASISWA 2022 <br>
+            - JUARA I PAKUBUMI CUP KELAS C <br>
+            - ⁠JUARA I PAKUBUMI CUP TGR
+          </p>
+        </div>
+        <div class="space-y-4">
+          <h6 class="font-bold text-tertiary">→ SENTANU CADIAMAN WIJAYA
+
+          </h6>
+          <p class="text-sm font-medium">
+            - TIM BK PORDA 2018 kab. TASIK MALAYA <br>
+            - ⁠JUARA I PAKU BUMI CUP 2019 <br>
+            - ⁠JUARA I KUNINGAN OPEN
+          </p>
+        </div>
+        <div class="space-y-4">
+          <h6 class="font-bold text-tertiary">→ IKHWAN
+
+          </h6>
+          <p class="text-sm font-medium">
+            - JUARA I PAKU BUMI CUP <br>
+            - ⁠JUARA I KUNINGAN OPEN <br>
+            - ⁠JUARA III PORDA 2022 <br>
+            - ⁠TIM BK PORDA KAB. Tasikmalaya
+          </p>
+        </div>
+        <div class="space-y-4">
           <h6 class="font-bold text-tertiary">→ Diki Rediana</h6>
           <p class="text-sm font-medium">
             - Kejuaraan Silat Banjar Tahun 2022 Meraih Juara 3 <br>
@@ -176,6 +209,39 @@
           <p class="text-sm font-medium">
             - Juara 2 Kejurda Jawara Padjadjaran <br>
             - Juara 3 Gubes Cup Indramayu 2022
+          </p>
+        </div>
+        <div class="space-y-4">
+          <h6 class="font-bold text-tertiary">→ Disya</h6>
+          <p class="text-sm font-medium">
+            - JUARA III BANJAR CAPION SHIP
+            - ⁠JUARA III KEJURDA MAHASISWA 2022
+            - ⁠JUARA III KEJURNAS
+            - ⁠JUARA II KEJURDA PAJADJARAN
+          </p>
+        </div>
+        <div class="space-y-4">
+          <h6 class="font-bold text-tertiary">→ Rival</h6>
+          <p class="text-sm font-medium">
+            - JUARA I KEJURDA PADJAJARAN
+          </p>
+        </div>
+        <div class="space-y-4">
+          <h6 class="font-bold text-tertiary">→ Shefia</h6>
+          <p class="text-sm font-medium">
+            - JUARA II KEJURDA PADJAJARAN <br>
+            - JUARA II BANJAR Championship
+          </p>
+        </div>
+        <div class="space-y-4">
+          <h6 class="font-bold text-tertiary">→ ALDI HADI HIDAYAT
+          </h6>
+          <p class="text-sm font-medium">
+            - JUARA I PAKUBUMI OPEN ASIA EROPA <br>
+            - ⁠JUARA III KEJURDA MAHASISWA 2022 <br>
+            - ⁠TIM BK PORDA KAB.TASIK MALAYA <br>
+            - ⁠JUARA I JAWARA TATAR GALUH <br>
+            - ⁠JUARA JUARA III BANJAR CHAPION SHIP
           </p>
         </div>
       </div>

@@ -15,6 +15,8 @@
         <h2 class="text-lg font-bold text-gray-700 border-b-2 pb-2 border-black md:w-1/2">Informasi Peserta</h2>
         <div class="mt-4 space-y-2">
           <p><span class="font-semibold">Nama:</span> {{ $peserta->nama }}</p>
+          <p><span class="font-semibold">Nomor Kartu Keluarga:</span> {{ $peserta->noKK }}</p>
+          <p><span class="font-semibold">NIK:</span> {{ $peserta->NIK }}</p>
           <p><span class="font-semibold">Kelas:</span> {{ $peserta->kelas ? $peserta->kelas->nama_kelas : 'Tidak ada kelas' }}</p>
           <p><span class="font-semibold">Tingkat:</span> {{ $peserta->kelas ? $peserta->kelas->tingkat : 'Tidak ada tingkat' }}</p>
           <p><span class="font-semibold">Kategori:</span> {{ $peserta->kategori ? $peserta->kategori->nama : 'Tidak ada kategori' }}</p>

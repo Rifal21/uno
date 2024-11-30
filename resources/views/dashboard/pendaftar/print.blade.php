@@ -109,6 +109,8 @@
         <div class="content">
             <h2 class="section-title">Informasi Peserta</h2>
             <p><strong>Nama:</strong> {{ $peserta->nama }}</p>
+            <p><strong>Nomor Kartu Keluarga:</strong> {{ $peserta->noKK }}</p>
+            <p><strong>NIK:</strong> {{ $peserta->NIK }}</p>
             <p><strong>Kelas:</strong> {{ $peserta->kelas ? $peserta->kelas->nama_kelas : 'Tidak ada kelas' }}</p>
             <p><strong>Tingkat:</strong> {{ $peserta->kelas ? $peserta->kelas->tingkat : 'Tidak ada tingkat' }}</p>
             <p><strong>Kategori:</strong> {{ $peserta->kategori ? $peserta->kategori->nama : 'Tidak ada kategori' }}</p>
