@@ -47,6 +47,8 @@
           <tr>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nomor Kartu Keluarga</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIK</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tingkat</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
@@ -66,6 +68,8 @@
             <tr>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $index + 1 }}</td>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->nama }}</td>
+              <td class="px-6 py-4 text-sm text-gray-700">{{ $data->noKK }}</td>
+              <td class="px-6 py-4 text-sm text-gray-700">{{ $data->NIK }}</td>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->kelas ? $data->kelas->nama_kelas : 'Tidak ada kelas' }}</td>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->kelas ? $data->kelas->tingkat : 'Tidak ada kelas' }}</td>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->kategori ? $data->kategori->nama : 'Tidak ada kategori' }}</td>

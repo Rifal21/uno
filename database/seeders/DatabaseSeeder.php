@@ -29,6 +29,16 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'is_admin' => true,
             'password' => bcrypt('admin123')
+        ], [
+            'name' => 'Rifal Kurniawan',
+            'email' => 'rifal@gmail.com',
+            'is_admin' => true,
+            'password' => bcrypt('falkur21')
+        ], [
+            'name' => 'Aldi Hadi Hidayat',
+            'email' => 'aldi@gmail.com',
+            'is_admin' => true,
+            'password' => bcrypt('aldi123')
         ]);
         Kategori::create([
             'nama' => "Tanding", 

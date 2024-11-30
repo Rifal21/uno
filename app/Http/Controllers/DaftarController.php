@@ -47,6 +47,8 @@ class DaftarController extends Controller
             'kontingen' => 'required',
             'email' => 'required',
             'nohp' => 'required',
+            'noKK' => 'required',
+            'NIK' => 'required',
             'foto' => 'required|array',            // Validasi untuk foto multiple
             'foto.*' => 'image|mimes:jpeg,png,jpg|max:2048', // Validasi setiap file gambar
         ]);

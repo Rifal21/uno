@@ -66,6 +66,9 @@
                     <li class="mb-4">
                         <a href="#" class="hover:underline"><img src="{{ asset('img/sponsor/prima.png') }}" class="w-28 h-10" alt=""></a>
                     </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline"><img src="{{ asset('img/sponsor/teneraw.png') }}" class="w-28 h-10" alt=""></a>
+                    </li>
                 </ul>
             </div>
         </div>

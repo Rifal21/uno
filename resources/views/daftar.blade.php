@@ -47,8 +47,14 @@
               <label for="nama" class="peer-focus:font-medium absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Lengkap Peserta</label>
           </div> --}}
           <div id="nama-container" class="relative z-0 w-full mb-5 group">
-            <label for="nama" class="peer-focus:font-medium absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Lengkap Peserta</label>
-        </div>
+            {{-- <label for="nama" class="peer-focus:font-medium absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Lengkap Peserta</label> --}}
+          </div>
+          <div id="noKK-container" class="relative z-0 w-full mb-5 group">
+            {{-- <label for="nama" class="peer-focus:font-medium absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nomor Kartu Keluarga</label> --}}
+          </div>
+          <div id="NIK-container" class="relative z-0 w-full mb-5 group">
+            {{-- <label for="nama" class="peer-focus:font-medium absolute text-sm text-black duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">NIK</label> --}}
+          </div>
         <!-- Input file -->
         <div class="relative z-0 w-full mb-5 group">
           <input type="file" name="foto[]" id="foto" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-white appearance-none focus:outline-none focus:ring-0 focus:border-tertiary peer" required multiple />
@@ -135,6 +141,8 @@
     const beratBadanInput = document.querySelector('input[name="berat_badan"]');
     const kelasSelect = document.querySelector('select[name="id_kelas"]');
     const namaContainer = document.getElementById('nama-container');
+    const noKK = document.getElementById('noKK-container');
+    const NIK = document.getElementById('NIK-container');
 
     const fetchKelas = () => {
         const kategoriId = kategoriSelect.value;
@@ -175,15 +183,33 @@
 
         // Generate input fields
         for (let i = 1; i <= jumlahInput; i++) {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.name = `nama[]`;
-            input.placeholder = `Nama Lengkap Peserta ${i}`;
-            input.className = 'block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-white focus:outline-none focus:ring-0 focus:border-tertiary peer mb-3';
-            input.required = true;
+            const inputNama = document.createElement('input');
+            const inputNoKK = document.createElement('input');
+            const inputNIK = document.createElement('input');
 
-            namaContainer.appendChild(input);
-        }
+            inputNama.type = 'text';
+            inputNama.name = `nama[]`;
+            inputNama.placeholder = `Nama Lengkap Peserta`;
+            inputNama.className = 'block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-white focus:outline-none focus:ring-0 focus:border-tertiary peer mb-3';
+            inputNama.required = true;
+
+            
+            inputNoKK.type = 'text';
+            inputNoKK.name = `noKK`;
+            inputNoKK.placeholder = `Nomor Kartu Keluarga`;
+            inputNoKK.className = 'block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-white focus:outline-none focus:ring-0 focus:border-tertiary peer mb-3';
+            inputNoKK.required = true;
+            
+            inputNIK.type = 'text';
+            inputNIK.name = `NIK`;
+            inputNIK.placeholder = `NIK`;
+            inputNIK.className = 'block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-white focus:outline-none focus:ring-0 focus:border-tertiary peer mb-3';
+            inputNIK.required = true;
+            
+            namaContainer.appendChild(inputNama);
+            namaContainer.appendChild(inputNoKK);
+            namaContainer.appendChild(inputNIK);
+          }
     };
 
     // Trigger fetch when kategori or berat badan changes
@@ -194,87 +220,6 @@
     beratBadanInput.addEventListener('input', fetchKelas);
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const searchNamaInput = document.querySelector('#search_nama');
-//     const searchResults = document.querySelector('#search_results');
-
-//     searchNamaInput.addEventListener('input', () => {
-//         const query = searchNamaInput.value;
-
-//         if (query.length > 2) { // Mulai pencarian jika karakter lebih dari 2
-//             fetch(`/search-nama?query=${query}`)
-//                 .then(response => response.json())
-//                 .then(data => {
-//                     searchResults.innerHTML = ''; // Kosongkan hasil sebelumnya
-//                     data.forEach(item => {
-//                         const li = document.createElement('li');
-//                         li.textContent = item.nama;
-//                         li.className = 'p-2 cursor-pointer hover:bg-gray-200';
-//                         li.addEventListener('click', () => {
-//                             searchNamaInput.value = item.nama;
-//                             searchResults.innerHTML = '';
-//                             searchResults.classList.add('hidden');
-//                         });
-//                         searchResults.appendChild(li);
-//                     });
-//                     searchResults.classList.remove('hidden');
-//                 })
-//                 .catch(error => console.error('Error:', error));
-//         } else {
-//             searchResults.innerHTML = '';
-//             searchResults.classList.add('hidden');
-//         }
-//     });
-
-//     document.addEventListener('click', (e) => {
-//         if (!searchNamaInput.contains(e.target) && !searchResults.contains(e.target)) {
-//             searchResults.innerHTML = '';
-//             searchResults.classList.add('hidden');
-//         }
-//     });
-// });
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const searchNamaInput = document.querySelector('#search_nama');
-//     const searchResults = document.querySelector('#search_results');
-
-//     searchNamaInput.addEventListener('input', () => {
-//         const query = searchNamaInput.value;
-
-//         if (query.length > 2) { // Mulai pencarian jika karakter lebih dari 2
-//             fetch(`/search-nama?query=${query}`)
-//                 .then(response => response.json())
-//                 .then(data => {
-//                     searchResults.innerHTML = ''; // Kosongkan hasil sebelumnya
-//                     data.forEach(item => {
-//                         const li = document.createElement('li');
-//                         // Jika item.nama adalah array, gabungkan elemen-elemen menjadi string
-//                         li.textContent = Array.isArray(item.nama) ? item.nama.join(', ') : item.nama;
-//                         li.className = 'p-2 cursor-pointer hover:bg-gray-200';
-//                         li.addEventListener('click', () => {
-//                             searchNamaInput.value = item.nama;
-//                             searchResults.innerHTML = ''; // Kosongkan hasil setelah memilih
-//                             searchResults.classList.add('hidden');
-//                         });
-//                         searchResults.appendChild(li);
-//                     });
-//                     searchResults.classList.remove('hidden'); // Tampilkan hasil pencarian
-//                 })
-//                 .catch(error => console.error('Error:', error));
-//         } else {
-//             searchResults.innerHTML = ''; // Kosongkan hasil pencarian jika query terlalu pendek
-//             searchResults.classList.add('hidden'); // Sembunyikan hasil
-//         }
-//     });
-
-//     // Menutup hasil pencarian jika klik di luar input atau hasil pencarian
-//     document.addEventListener('click', (e) => {
-//         if (!searchNamaInput.contains(e.target) && !searchResults.contains(e.target)) {
-//             searchResults.innerHTML = ''; // Kosongkan hasil
-//             searchResults.classList.add('hidden'); // Sembunyikan hasil
-//         }
-//     });
-// });
 
 document.addEventListener('DOMContentLoaded', () => {
     const searchNamaInput = document.querySelector('#search_nama');

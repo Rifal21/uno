@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('daftars', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('noKK');
+            $table->string('NIK');
             $table->string('kontingen');
             $table->string('email');
             $table->bigInteger('nohp');
