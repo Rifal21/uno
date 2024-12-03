@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('noKK');
             $table->string('NIK');
             $table->string('kontingen');
+            $table->string('nama_pelatih');
             $table->string('email');
             $table->bigInteger('nohp');
             $table->integer('berat_badan');

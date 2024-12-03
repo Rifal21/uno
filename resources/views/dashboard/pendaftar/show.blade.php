@@ -44,8 +44,9 @@
         <h2 class="text-lg font-semibold text-gray-700 border-b-2 pb-2 border-black md:w-1/2">Kontak dan Status</h2>
         <div class="mt-4 space-y-2">
           <p><span class="font-semibold">Kontingen:</span> {{ $peserta->kontingen }}</p>
+          <p><span class="font-semibold">Nama Pelatih:</span> {{ $peserta->nama_pelatih }}</p>
           <p><span class="font-semibold">Email:</span> {{ $peserta->email }}</p>
-          <p><span class="font-semibold">No HP / WhatsApp:</span> {{ $peserta->nohp }}</p>
+          <p><span class="font-semibold">No HP / WhatsApp (pelatih):</span> {{ $peserta->nohp }}</p>
           <p>
             <span class="font-semibold">Status:</span>
             <span 

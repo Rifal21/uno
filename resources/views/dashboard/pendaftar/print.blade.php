@@ -122,6 +122,7 @@
         <div class="content">
             <h2 class="section-title">Kontak dan Status</h2>
             <p><strong>Kontingen:</strong> {{ $peserta->kontingen }}</p>
+            <p><strong>Nama Pelatih:</strong> {{ $peserta->nama_pelatih }}</p>
             <p><strong>Email:</strong> {{ $peserta->email }}</p>
             <p><strong>No HP / WhatsApp:</strong> {{ $peserta->nohp }}</p>
             <p><strong>Status:</strong> <span style="color: {{ $peserta->status === 0 ? 'red' : 'green' }}; font-weight: bold; max-height: 190px;">{{ $peserta->status === 0 ? 'Belum Diverifikasi' : 'Terverifikasi' }}</span></p>

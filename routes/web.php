@@ -8,6 +8,9 @@ use App\Http\Controllers\GaleriUNOController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KelasController;
 use App\Models\GaleriUNO;
+use App\Exports\PesertaExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -63,3 +66,5 @@ Route::post('/pendaftaran/{id}', [PesertaController::class, 'verify'])->name('pe
 Route::get('/dashboard/pendaftaran/{id}/print', [PesertaController::class, 'print'])->name('pendaftaran.print');
 Route::get('/get-kelas', [KelasController::class, 'getKelasByKategoriAndBerat']);
 Route::get('/search-nama', [DaftarController::class, 'searchNama']);
+Route::get('/dashboard/pendaftaran/filter', [PesertaController::class, 'filter'])->name('pendaftaran.filter');
+Route::get('pendaftaran/export', [PesertaController::class, 'export'])->name('pendaftaran.export');

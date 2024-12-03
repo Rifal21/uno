@@ -12,6 +12,10 @@
         <form class="max-w-md mx-auto shadow-xl p-6 bg-gradient-to-br from-primary to-secondary rounded-md" action="{{ route('daftar.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="relative z-0 w-full mb-5 group">
+            <input type="text" name="kontingen" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-white appearance-none dark:text-black dark:border-gray-600 dark:focus:border-tertiary focus:outline-none focus:ring-0 focus:border-tertiary peer" placeholder=" " required />
+            <label for="kontingen" class="peer-focus:font-medium absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Kontingen</label>
+        </div>
+          <div class="relative z-0 w-full mb-5 group">
             <label for="kategori" class="sr-only">Kategori</label>
             <select id="kategori_select" name="id_kategori" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-white   focus:outline-none focus:ring-0 focus:border-tertiary   peer">
                 <option selected>Pilih Kategori</option>
@@ -38,7 +42,7 @@
             <select id="kelas_select" name="id_kelas" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-white appearance-none  focus:outline-none focus:ring-0 focus:border-tertiary   peer">
                 <option selected>Pilih Kelas</option>
                 @foreach ($kelas as $item)
-                <option value="{{ $item->id }}">{{ $item->nama_kelas }} || {{ $item->tingkat }} => {{ $item->BBMin }}Kg - {{ $item->BBMax }}Kg</option>
+                <option value="{{ $item->id }}">{{ $item->nama_kelas }} - {{ $item->tingkat }} => {{ $item->BBMin }}Kg - {{ $item->BBMax }}Kg</option>
                 @endforeach
             </select>
           </div>
@@ -64,17 +68,18 @@
         <!-- Container untuk preview gambar -->
         <div id="image-preview-container" class="flex gap-2 flex-wrap"></div>
 
-          <div class="relative z-0 w-full mb-5 group">
-              <input type="text" name="kontingen" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-white appearance-none dark:text-black dark:border-gray-600 dark:focus:border-tertiary focus:outline-none focus:ring-0 focus:border-tertiary peer" placeholder=" " required />
-              <label for="kontingen" class="peer-focus:font-medium absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Kontingen</label>
-          </div>
+
           <div class="relative z-0 w-full mb-5 group">
               <input type="email" name="email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-white appearance-none dark:text-black  focus:outline-none focus:ring-0 focus:border-tertiary peer" placeholder=" " required />
               <label for="email" class="peer-focus:font-medium absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email </label>
           </div>
           <div class="relative z-0 w-full mb-5 group">
+            <input type="text" name="nama_pelatih" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-white appearance-none dark:text-black  focus:outline-none focus:ring-0 focus:border-tertiary peer" placeholder=" " required />
+            <label for="nama_pelatih" class="peer-focus:font-medium absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Pelatih</label>
+        </div>
+          <div class="relative z-0 w-full mb-5 group">
             <input type="text" name="nohp" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-white appearance-none dark:text-black  focus:outline-none focus:ring-0 focus:border-tertiary peer" placeholder=" " required />
-            <label for="nohp" class="peer-focus:font-medium absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">No. Hp / Whatsapp</label>
+            <label for="nohp" class="peer-focus:font-medium absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-tertiary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">No. Hp / Whatsapp (pelatih)</label>
         </div>
           <button type="submit" class="text-white bg-tertiary hover:bg-red-800 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">Submit</button>
         </form>
@@ -103,7 +108,7 @@
             <label for="bukti_pembayaran" class="text-sm text-white">Upload Bukti Pembayaran</label>
           </div>
           <div class="relative z-0 w-full mb-5">
-            <img id="image-preview" class="w-full h-auto rounded-md hidden" alt="Preview Bukti Pembayaran">
+            <img id="image-preview" class="w-1/2 h-auto rounded-md hidden" alt="Preview Bukti Pembayaran">
           </div>
           <button type="submit" class="text-white bg-tertiary hover:bg-red-800 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center">Submit</button>
         </form>
@@ -159,7 +164,7 @@
                     data.forEach(kelas => {
                         const option = document.createElement('option');
                         option.value = kelas.id;
-                        option.textContent = kelas.nama_kelas + ' || ' + kelas.tingkat + ' => ' + kelas.BBMin + 'Kg - ' + kelas.BBMax + 'Kg';
+                        option.textContent = 'Kelas : ' +kelas.nama_kelas + ' || Tingkat : ' + kelas.tingkat + ' => ' + kelas.BBMin + 'Kg - ' + kelas.BBMax + 'Kg';
                         kelasSelect.appendChild(option);
                     });
                 })
@@ -231,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchNamaInput.addEventListener('input', () => {
         const query = searchNamaInput.value;
 
-        if (query.length > 2) { // Mulai pencarian jika input lebih dari 2 karakter
+        if (query.length >= 2) { // Mulai pencarian jika input lebih dari 2 karakter
             fetch(`/search-nama?query=${query}`)
                 .then(response => response.json())
                 .then(data => {

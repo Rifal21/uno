@@ -3,34 +3,97 @@
 namespace App\Http\Controllers;
 
 use App\Models\Daftar;
+use App\Models\Kelas;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PesertaExport;
 
 class PesertaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    // public function index(Request $request)
+    // {
+    //     $query = Daftar::query();
+    
+    //     if ($search = $request->input('search')) {
+    //         $query->where('nama', 'like', "%{$search}%")
+    //               ->orWhereHas('kelas', function ($q) use ($search) {
+    //                   $q->where('tingkat', 'like', "%{$search}%");
+    //               })
+    //               ->orWhereHas('kategori', function ($q) use ($search) {
+    //                   $q->where('nama', 'like', "%{$search}%");
+    //               });
+    //     }
+    
+    //     $peserta = $query->with(['kelas', 'kategori'])->paginate(10);
+    
+    //     return view('dashboard.pendaftar.index', compact('peserta'));
+    
+    // }
     public function index(Request $request)
-    {
-        $query = Daftar::query();
-    
-        if ($search = $request->input('search')) {
-            $query->where('nama', 'like', "%{$search}%")
-                  ->orWhereHas('kelas', function ($q) use ($search) {
-                      $q->where('tingkat', 'like', "%{$search}%");
-                  })
-                  ->orWhereHas('kategori', function ($q) use ($search) {
-                      $q->where('nama', 'like', "%{$search}%");
-                  });
-        }
-    
-        $peserta = $query->with(['kelas', 'kategori'])->paginate(10);
-    
-        return view('dashboard.pendaftar.index', compact('peserta'));
-    
+{
+    $query = Daftar::query();
+
+    // Search
+    if ($search = $request->input('search')) {
+        $query->where('nama', 'like', "%{$search}%")
+              ->orWhereHas('kelas', function ($q) use ($search) {
+                  $q->where('tingkat', 'like', "%{$search}%");
+              })
+              ->orWhereHas('kategori', function ($q) use ($search) {
+                  $q->where('nama', 'like', "%{$search}%");
+              });
     }
+
+    // Filter Tingkat
+    if ($request->filled('tingkat')) {
+        $query->whereHas('kelas', function ($q) use ($request) {
+            $q->where('tingkat', $request->tingkat);
+        });
+    }
+
+    // Filter Kategori
+    if ($request->filled('kategori')) {
+        $query->whereHas('kategori', function ($q) use ($request) {
+            $q->where('nama', $request->kategori);
+        });
+    }
+
+    // Filter Kontingen
+    if ($request->filled('kontingen')) {
+        $query->where('kontingen', $request->kontingen);
+    }
+
+    // Filter Kelas
+    if ($request->filled('kelas')) {
+        $query->whereHas('kelas', function ($q) use ($request) {
+            $q->where('nama_kelas', $request->kelas);
+        });
+    }
+
+    // Options for Dropdowns
+    $tingkatOptions = Kelas::select('tingkat')->distinct()->pluck('tingkat');
+    $kategoriOptions = Kategori::select('nama')->distinct()->pluck('nama');
+    $kontingenOptions = Daftar::select('kontingen')->distinct()->pluck('kontingen');
+    $kelasOptions = Kelas::select('nama_kelas')->distinct()->pluck('nama_kelas');
+
+    // Execute Query with Pagination
+    $peserta = $query->paginate(10);
+
+    return view('dashboard.pendaftar.index', compact(
+        'peserta',
+        'tingkatOptions',
+        'kategoriOptions',
+        'kontingenOptions',
+        'kelasOptions'
+    ));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -133,6 +196,40 @@ class PesertaController extends Controller
         // Return PDF ke browser
         return $pdf->stream($fileName);
     }
+
+//     public function filter(Request $request)
+// {
+//     $query = Daftar::query();
+
+//     if ($request->filled('tingkat')) {
+//         $query->whereHas('kelas', function ($q) use ($request) {
+//             $q->where('tingkat', $request->tingkat);
+//         });
+//     }
+//     if ($request->filled('kategori')) {
+//         $query->whereHas('kategori', function ($q) use ($request) {
+//             $q->where('nama', $request->kategori);
+//         });
+//     }
+//     if ($request->filled('kontingen')) {
+//         $query->where('kontingen', $request->kontingen);
+//     }
+//     if ($request->filled('kelas')) {
+//         $query->whereHas('kelas', function ($q) use ($request) {
+//             $q->where('nama_kelas', $request->kelas);
+//         });
+//     }
+
+//     $peserta = $query->get();
+
+//     return response()->json($peserta);
+// }
+
+public function export(Request $request)
+{
+    $filters = $request->all();
+    return Excel::download(new PesertaExport($filters), 'peserta.xlsx');
+}
     
     
 }

@@ -45,6 +45,7 @@ class DaftarController extends Controller
             'berat_badan' => 'required',
             'id_kelas' => 'required',
             'kontingen' => 'required',
+            'nama_pelatih' => 'required',
             'email' => 'required',
             'nohp' => 'required',
             'noKK' => 'required',

@@ -22,21 +22,62 @@
 
   <div class="flex flex-col space-y-3">
     <!-- Header -->
-    <div class="flex flex-col md:flex-row md:justify-between items-center">
-      <h1 class="text-2xl font-bold mb-2">Peserta UNO IV</h1>
-      <form method="GET" action="{{ route('pendaftaran.index') }}" class="flex items-center space-x-3 w-full md:w-1/2  md:justify-end justify-center">
+    <h1 class="text-2xl font-bold mb-2">Peserta UNO IV</h1>
+    <div class="flex flex-col md:flex-row md:justify-end items-center">
+      <form method="GET" action="{{ route('pendaftaran.index') }}" id="filterForm" class="flex flex-wrap items-center md:space-x-3 w-full md:w-full md:justify-end justify-center">
         <input 
           type="search" 
           name="search" 
           value="{{ request('search') }}" 
           placeholder="Cari berdasarkan nama, tingkat, kategori" 
-          class="px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-primary focus:outline-none w-full md:w-1/2"
+          class="px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-primary focus:outline-none w-full md:w-auto mb-3 md:mb-0" 
+          oninput="document.getElementById('filterForm').submit()" {{-- Kirim form saat ada input --}}
         />
-        <button 
-          type="submit" 
-          class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition">
-          Cari
-        </button>
+
+        
+        <!-- Filter Tingkat -->
+        <select name="tingkat" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-primary focus:outline-none w-full md:w-auto mb-3 md:mb-0" onchange="document.getElementById('filterForm').submit()">
+          <option value="">Semua Tingkat</option>
+          @foreach($tingkatOptions as $tingkat)
+            <option value="{{ $tingkat }}" {{ request('tingkat') == $tingkat ? 'selected' : '' }}>
+              {{ $tingkat }}
+            </option>
+          @endforeach
+        </select>
+        
+        <!-- Filter Kategori -->
+        <select name="kategori" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-primary focus:outline-none w-full md:w-auto mb-3 md:mb-0" onchange="document.getElementById('filterForm').submit()">
+          <option value="">Semua Kategori</option>
+          @foreach($kategoriOptions as $kategori)
+            <option value="{{ $kategori }}" {{ request('kategori') == $kategori ? 'selected' : '' }}>
+              {{ $kategori }}
+            </option>
+          @endforeach
+        </select>
+        
+        <!-- Filter Kontingen -->
+        <select name="kontingen" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-primary focus:outline-none w-full md:w-auto mb-3 md:mb-0" onchange="document.getElementById('filterForm').submit()">
+          <option value="">Semua Kontingen</option>
+          @foreach($kontingenOptions as $kontingen)
+            <option value="{{ $kontingen }}" {{ request('kontingen') == $kontingen ? 'selected' : '' }}>
+              {{ $kontingen }}
+            </option>
+          @endforeach
+        </select>
+        
+        <!-- Filter Kelas -->
+        <select name="kelas" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-primary focus:outline-none w-full md:w-auto mb-3 md:mb-0" onchange="document.getElementById('filterForm').submit()">
+          <option value="">Semua Kelas</option>
+          @foreach($kelasOptions as $kelas)
+            <option value="{{ $kelas }}" {{ request('kelas') == $kelas ? 'selected' : '' }}>
+              {{ $kelas }}
+            </option>
+          @endforeach
+        </select>
+        <a href="{{ route('pendaftaran.export', request()->all()) }}" 
+          class="w-full px-4 py-2 bg-primary text-white rounded hover:bg-gradient-to-bl from-primary to-secondary inline-flex justify-center items-center gap-1 transition-all">
+         Export to Excel
+       </a>
       </form>
     </div>
 
@@ -55,6 +96,7 @@
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jenis Kelamin</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Berat Badan</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kontingen</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Pelatih</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">E-mail</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No Hp / Whatsapp</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bukti Pembayaran</th>
@@ -76,6 +118,7 @@
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->gender}}</td>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->berat_badan}}Kg</td>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->kontingen}}</td>
+              <td class="px-6 py-4 text-sm text-gray-700">{{ $data->nama_pelatih}}</td>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->email}}</td>
               <td class="px-6 py-4 text-sm text-gray-700">{{ $data->nohp}}</td>
               <td class="px-6 py-4 text-sm text-gray-700"><img src="{{ asset('storage/' . $data->bukti_pembayaran) }}" alt="" class="h-20"></td>
